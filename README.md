@@ -7,4 +7,4 @@ It is about the same size, 95x75x25mm as the elecraft KPod, and uses surface-mou
 It uses the same optical encoder (with a shorter shaft) as the original tuning knob.
 Tactile switches are used to activate the functions. Each button can be programmed for tap and hold functions.
 
-A case, buttons for the tactile switches, and a spacer for the rocker switch have been designed (Fusion 360).
+A case, buttons for the tactile switches, and a spacer for the rocker switch have been designed (Fusion 360). I am still working on the rear cover, and stand.
