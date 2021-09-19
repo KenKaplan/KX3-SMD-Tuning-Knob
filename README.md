@@ -2,10 +2,7 @@
 Remote tuning knob/switches for Elecraft KX3/KX2
 External Tuning Knob/Buttons for the Elecraft KX3/KX2 transceiver de WB2ART
 
-This knob uses (mostly) surface-mount devices.
+It is about the same size, 95x75x25mm as the elecraft KPod, and uses (mostly) surface-mount devices. The encoder, led's, rocker switch, and  a few headers are thru-hole.
 
-The external tuning knob uses an optical encoder (120ppr), and 8 buttons.
-
-Each button can be programmed for tap and hold functions.
-
-Tuning knob has not been tested with the KX2
+It uses the same optical encoder (with a shorter shaft) as the original tuning knob.
+Tactile switches are used to activate the functions. Each button can be programmed for tap and hold functions.
