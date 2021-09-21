@@ -1,4 +1,4 @@
-# KX3-SMD-Tuning-Knob
+# KX3-SMD-Remote-Tuning-Knob
 Remote tuning knob/switches for Elecraft KX3/KX2
 External Tuning Knob/Switches for the Elecraft KX3/KX2 transceiver de WB2ART
 
