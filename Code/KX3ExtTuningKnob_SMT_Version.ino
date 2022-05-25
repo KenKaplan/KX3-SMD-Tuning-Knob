@@ -1,3 +1,5 @@
+// PRELIMINARY CODE - USE AT YOUR OWN RISK
+
 /**************************************************************************
   KX3ExtTuningKnob - (C) Ken Kaplan WB2ART March 2022 SMD version 1.03
   Rotary encoder and cw code de W8BH.
