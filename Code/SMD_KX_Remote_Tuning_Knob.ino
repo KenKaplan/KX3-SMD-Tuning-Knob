@@ -2,10 +2,13 @@
   KX3ExtTuningKnob - (C) Ken Kaplan WB2ART and Mark Hatch AJ6CU - June 2022 SMD version 1.06
   Rotary encoder and cw code de W8BH.
   ***** This version is for the single board smd tuning knob pcb *****
-  * using Arduino 1.8.19 
-  * STM32F1 Boards (Arduino_STM32) - Generic STM32F103C Series
-  * 
-   6/09/22 - added macro definitions for KX2 //MJH
+    using Arduino 1.8.19
+    STM32F1 Boards (Arduino_STM32) - Generic STM32F103C Series
+
+   6/10/22 - removed void ledFade() as we do not need led's to fade, only be on/off/blink
+             removed reference to led0Cntl as led0 is power led wired to +5v
+   6/09/22 - added macro definitions for KX2 - //MJH
+   6/01/22 - change some logic definitions - //MJH
    3/24/22 - added commands to clear and turn off RIT
    8/28/21 - added read/write function key strings for EEPROM
    8/16/21 - reset version to 1.01
@@ -285,6 +288,7 @@ class ledControl
     //MJH This in theory might need to be updated to deal with positive/negative logic. But since this fades and unfades I didn't
     //MJH want to mess with it
 
+/*
     void ledFade() // uses analogWrite
     {
       unsigned long currentMillis = millis();
@@ -301,7 +305,7 @@ class ledControl
           fadeAmount = -fadeAmount; // reverse direction
         }
       }
-    }
+    } */
 }
 ;
 
@@ -396,8 +400,6 @@ void setupSwitches() // and debounce and hold times
   F6Btn.holdTime(1000);
   F7Btn.holdTime(1000);
   F8Btn.holdTime(1000);
-
-  //  F1Btn.doubleTapTime(250);  // to activate double tap functions
 }
 
 void setupEncoder()
@@ -485,7 +487,8 @@ void sendB()
 
 // end CW Routines
 
-ledControl led0Cntl(led0, ledOn, ledOff);
+// control flash time for led's
+// ledControl led0Cntl(led0, ledOn, ledOff); // led0 is power on indicator wired to +5v
 ledControl led1Cntl(led1, ledOn, ledOff);
 ledControl led2Cntl(led2, ledOn, ledOff);
 ledControl led3Cntl(led3, ledOn, ledOff);
@@ -507,7 +510,7 @@ void setup()
   //MJH  Switch the initiation to use the led0Cntl class
   //MJH digitalWrite(led0, HIGH); // smd red led on
   //MJH digitalWrite(led4, LOW); // blinks if bypass mode false
-  led0Cntl.off();  //mjh
+//  led0Cntl.off();  //mjh
   led1Cntl.off();  //mjh
   led2Cntl.off();  //mjh
   led3Cntl.off();  //mjh
@@ -526,13 +529,13 @@ void loop()
 
     //MJH Switched to ledControl class
     //digitalWrite(led4, LOW); // turn off led4
-    led0Cntl.on();    //MJH
+//    led0Cntl.on();    //MJH
     led4Cntl.off();   //MJH
   }
   else // BypassPin is LOW    ***** Pwr LED is hardwired to +5v in the smd version *****
   {
     bypassAll = false; // pass characters between computer and KX3, routine at end of code
-    led0Cntl.ledFlash(); // flash LED0 when in Bypass mode - led_builtin
+//    led0Cntl.ledFlash(); // flash LED0 when in Bypass mode - led_builtin
     led4Cntl.ledFlash(); // flash led4 to indicate bypass mode
   }
 
@@ -735,14 +738,6 @@ void loop()
             Serial2.println(F1tap);
             break;
           }
-        /*
-                case (doubleTap): // you can add lines like this to each button event. You also need to set up the buttons in void setupSwitches()
-                                    // and add additional commands to send - String F1DoubleTap = "SWH25;";
-                  {
-                    Serial2.println(F1DoubleTap);
-                    break;
-                  }
-        */
         case (hold):
           {
             Serial2.println(F1hold);
